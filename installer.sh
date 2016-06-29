@@ -19,7 +19,7 @@ mkdir -p $keydir
 mkdir -p $privkeydir
 mkdir -p $pubkeydir
 #moves script to /bin/
-mv installer.sh /bin/mysqlquerymailer
+mv mysqlquerymailer.sh /bin/mysqlquerymailer
 #make script executeable
 chmod +x /bin/mysqlquerymailer
 
