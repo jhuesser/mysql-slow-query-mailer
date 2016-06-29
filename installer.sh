@@ -6,7 +6,7 @@ configfile=${configpath}/email
 #file to store number of queries
 qryfile=${configpath}/qrynmb
 #Keydirectory
-keydir=${configdir}/keys
+keydir=${configpath}/keys
 #dir with the privatekey
 privkeydir=${keydir}/.private
 #dir with the publickey
@@ -18,6 +18,7 @@ mkdir -p $configpath
 mkdir -p $keydir
 mkdir -p $privkeydir
 mkdir -p $pubkeydir
+touch $qryfile
 #moves script to /bin/
 mv mysqlquerymailer.sh /bin/mysqlquerymailer
 #make script executeable
@@ -76,14 +77,14 @@ function credentials {
 	#ask number of qry
 	read -p "How many queries do you want to recive? " qry
 	#store nmb of qry
-	echo $qry > $qrynmb
+	echo $qry > $qryfile
 	echo ''
 	#save credentials to file
 	
 	#encrypt credentials
-	encryptCredentials ${configdir}/$configfile
+	encryptCredentials ${configpath}/$configfile
 	
-	rm ${configdir}/$configfile
+	rm ${configpath}/$configfile
 	
 	
 		
