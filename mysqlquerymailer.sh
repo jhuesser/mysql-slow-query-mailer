@@ -3,7 +3,6 @@
 configpath=/etc/mysqlquerymailer
 #file to store email
 configfile=${configpath}/email
-encconfigfile=${configpath}/email.encrypted
 #file to store number of queries
 qryfile=${configpath}/qrynmb
 #Keydirectory
@@ -12,11 +11,13 @@ keydir=${configpath}/keys
 privkeydir=${keydir}/.private
 #dir with the publickey
 pubkeydir=${keydir}/public
+pubkey=${pubkeydir}/public_key.pem
+privkey=${privkeydir}/private_key.pem
 #get date
 DATE=`date +%Y-%m-%d`
 
 
-openssl rsautl -decrypt -inkey $privkey -in $encconfigfile -out $configfile
+openssl rsautl -decrypt -inkey privatekey.pem -in key.bin.enc -out key.bin
 
 nmb=`cat $qryfile`
 email=`cat $configfile`
