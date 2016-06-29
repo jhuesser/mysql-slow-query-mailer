@@ -1,15 +1,26 @@
 #!/bin/bash
-#define configdir
+#Define configpath
 configpath=/etc/mysqlquerymailer
-#define email file
+#file to store email
 configfile=${configpath}/email
-#define qry numberfile
+encconfigfile=${configpath}/email.encrypted
+#file to store number of queries
 qryfile=${configpath}/qrynmb
+#Keydirectory
+keydir=${configpath}/keys
+#dir with the privatekey
+privkeydir=${keydir}/.private
+#dir with the publickey
+pubkeydir=${keydir}/public
 #get date
 DATE=`date +%Y-%m-%d`
-#reads valeus of files
+
+
+openssl rsautl -decrypt -inkey $privkey -in $encconfigfile -out ${configpath}/$configfile
+
 nmb=`cat $qryfile`
 email=`cat $configfile`
+
 
 #ask for $nmb of slow queries and sends as mail.
 mysqldumpslow -a -s r -t $nmb /var/log/mysql/mysql-slow.log | mail -s "Slowest $nmb queries of $DATE" $email
