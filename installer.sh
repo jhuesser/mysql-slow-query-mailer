@@ -11,6 +11,8 @@ keydir=${configpath}/keys
 privkeydir=${keydir}/.private
 #dir with the publickey
 pubkeydir=${keydir}/public
+pubkey=${pubkeydir}/public_key.pem
+privkey=${privkeydir}/private_key.pem
 
 function instellation {
 #create dirs if not exist
