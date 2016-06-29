@@ -16,7 +16,7 @@ pubkeydir=${keydir}/public
 DATE=`date +%Y-%m-%d`
 
 
-openssl rsautl -decrypt -inkey $privkey -in $encconfigfile -out ${configpath}/$configfile
+openssl rsautl -decrypt -inkey $privkey -in $encconfigfile -out $configfile
 
 nmb=`cat $qryfile`
 email=`cat $configfile`
