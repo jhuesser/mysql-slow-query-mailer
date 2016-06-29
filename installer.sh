@@ -82,9 +82,9 @@ function credentials {
 	#save credentials to file
 	
 	#encrypt credentials
-	encryptCredentials ${configpath}/$configfile
+	encryptCredentials /$configfile
 	
-	rm ${configpath}/$configfile
+	rm $configfile
 	
 	
 		
