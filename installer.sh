@@ -11,7 +11,9 @@ keydir=${configpath}/keys
 privkeydir=${keydir}/.private
 #dir with the publickey
 pubkeydir=${keydir}/public
+#the public key
 pubkey=${pubkeydir}/public_key.pem
+#the private key
 privkey=${privkeydir}/private_key.pem
 
 function instellation {
@@ -20,6 +22,7 @@ mkdir -p $configpath
 mkdir -p $keydir
 mkdir -p $privkeydir
 mkdir -p $pubkeydir
+#create query file if not exist
 touch $qryfile
 #moves script to /bin/
 mv mysqlquerymailer.sh /bin/mysqlquerymailer
